@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Difficulty, fetchQuizQuestions, QuestionState } from "./API";
 import QuestionCard from "./components/QuestionCard";
 import { GlobalStyle, Warpper } from "./App.styles";
+import AnswerRecap from "./components/AnswerRecap";
 
 export type AnswerObject = {
     question: string;
@@ -84,6 +85,10 @@ const App = () => {
                 {!gameOver ? <p className="score">Score: {score}</p> : null}
                 {/* Loading */}
                 {loading && <p>Loading Questions ...</p>}
+                {/* Answer recap */}
+                {userAnswers.length === TOTAL_QUESTIONS && (
+                    <AnswerRecap answers={userAnswers ? userAnswers : []} />
+                )}
                 {/* Question Card */}
                 {!loading && !gameOver && (
                     <QuestionCard

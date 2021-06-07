@@ -1,5 +1,8 @@
 import styled from "styled-components";
 
+// const correctColor;
+const incorrectColor = "linear-gradient(90deg, #ff5656, #c16868)";
+
 export const Wrapper = styled.div`
     max-width: 1100px;
     background: #ebfeff;
@@ -11,6 +14,27 @@ export const Wrapper = styled.div`
 
     p {
         font-size: 1rem;
+    }
+`;
+
+type RecapProps = {
+    correct: boolean;
+};
+
+export const RecapWrapper = styled.div`
+    max-width: 75vw;
+    background: #ebfeff;
+    border-radius: 20px;
+    border: 2px solid #0085a3;
+
+    ol {
+        li {
+            border-bottom: 1px solid #5b5b5b;
+
+            :last-child {
+                border-bottom: none;
+            }
+        }
     }
 `;
 
@@ -42,7 +66,7 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
             return correct
                 ? "linear-gradient(90deg, #56ffa4, #59bc86)"
                 : !correct && userClicked
-                ? "linear-gradient(90deg, #ff5656, #c16868)"
+                ? incorrectColor
                 : "linear-gradient(90deg, #56ccff, #6eafb4)";
         }};
     }

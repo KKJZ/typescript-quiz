@@ -86,21 +86,23 @@ const App = () => {
                 {/* Loading */}
                 {loading && <p>Loading Questions ...</p>}
                 {/* Answer recap */}
-                {userAnswers.length === TOTAL_QUESTIONS && (
+                {userAnswers.length === TOTAL_QUESTIONS ? (
                     <AnswerRecap answers={userAnswers ? userAnswers : []} />
-                )}
-                {/* Question Card */}
-                {!loading && !gameOver && (
-                    <QuestionCard
-                        questionNum={number + 1}
-                        totalQuestions={TOTAL_QUESTIONS}
-                        question={questions[number].question}
-                        answers={questions[number].answers}
-                        userAnswer={
-                            userAnswers ? userAnswers[number] : undefined
-                        }
-                        callback={checkAnswer}
-                    />
+                ) : (
+                    /* Question Card */
+                    !loading &&
+                    !gameOver && (
+                        <QuestionCard
+                            questionNum={number + 1}
+                            totalQuestions={TOTAL_QUESTIONS}
+                            question={questions[number].question}
+                            answers={questions[number].answers}
+                            userAnswer={
+                                userAnswers ? userAnswers[number] : undefined
+                            }
+                            callback={checkAnswer}
+                        />
+                    )
                 )}
                 {/* Next Question  */}
                 {!gameOver &&
